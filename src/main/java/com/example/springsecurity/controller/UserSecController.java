@@ -39,6 +39,9 @@ public class UserSecController {
         Set<Role> roleList = new HashSet<>();
         Role readRole;
 
+        //Encriptar password
+        userSec.setPassword(userServ.encriptPassword(userSec.getPassword()));
+
         for(Role role : userSec.getRolesList()){
             readRole = rolServ.findById(role.getId()).orElse(null);
             if(readRole != null){

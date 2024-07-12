@@ -11,5 +11,7 @@ public interface IUserSecService {
     public UserSec save(UserSec userSec);
     public void deleteById(Long id);
     public void update(UserSec userSec);
+
+    String encriptPassword(String password);
     //public String encriptPassword(String password);
 }

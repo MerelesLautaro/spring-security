@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -51,31 +52,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
-    /*@Bean
-    public UserDetailsService userDetailsService(){
-        List userDetailsList = new ArrayList<>();
-
-        userDetailsList.add(User.withUsername("Lauta")
-                .password("1234")
-                .roles("ADMIN")
-                .authorities("CREATE","READ","UPDATE","DELETE")
-                .build());
-
-        userDetailsList.add(User.withUsername("Carlos")
-                .password("1234")
-                .roles("USER")
-                .authorities("READ")
-                .build());
-
-        userDetailsList.add(User.withUsername("Lucas")
-                .password("1234")
-                .roles("USER")
-                .authorities("UPDATE")
-                .build());
-
-        return new InMemoryUserDetailsManager(userDetailsList);
-    }*/
 }

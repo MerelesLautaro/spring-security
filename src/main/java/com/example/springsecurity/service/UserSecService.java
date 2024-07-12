@@ -3,6 +3,7 @@ package com.example.springsecurity.service;
 import com.example.springsecurity.model.UserSec;
 import com.example.springsecurity.repository.IUserSecRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,5 +37,10 @@ public class UserSecService implements IUserSecService{
     @Override
     public void update(UserSec userSec) {
         userRepo.save(userSec);
+    }
+
+    @Override
+    public String encriptPassword(String password) {
+        return new BCryptPasswordEncoder().encode(password);
     }
 }
