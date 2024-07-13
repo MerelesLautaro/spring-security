@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 
     @GetMapping("/helloSec")
-    @PreAuthorize("hasAuthority('READ')")
+    @PreAuthorize("hasRole('ADMIN')") //HasAnyRole cuando son mas de un rol
     public String getHello(){
         return "Hello world  with security";
     }
